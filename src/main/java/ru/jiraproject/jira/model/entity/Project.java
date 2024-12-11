@@ -11,6 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name = "projects", schema = "jira")
 public class Project {
 
     @Id
@@ -25,7 +26,7 @@ public class Project {
     @Column(name = "timestamp_cr")
     LocalDateTime timestampCr;
     @UpdateTimestamp
-    @Column(name = "timestamp_cr")
+    @Column(name = "timestamp_up")
     LocalDateTime timestampUp;
 
 }

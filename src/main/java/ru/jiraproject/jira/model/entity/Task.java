@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Table(name = "tasks", schema = "jira")
 public class Task {
 
     @Id
@@ -32,7 +33,7 @@ public class Task {
     @Column(name = "timestamp_cr")
     LocalDateTime timestampCr;
     @UpdateTimestamp
-    @Column(name = "timestamp_cr")
+    @Column(name = "timestamp_up")
     LocalDateTime timestampUp;
 
 }

@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:3306/jira
-    username: root
-    password: password
+    url: jdbc:postgresql://localhost:5433/jira_db
+    username: postgres
+    password: qweasdzxc
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     database: PostgreSql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true

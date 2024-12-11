@@ -10,6 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name = "users", schema = "jira")
 public class User {
 
     @Id
@@ -30,6 +31,6 @@ public class User {
     @Column(name = "timestamp_cr")
     LocalDateTime timestampCr;
     @UpdateTimestamp
-    @Column(name = "timestamp_cr")
+    @Column(name = "timestamp_up")
     LocalDateTime timestampUp;
 }
