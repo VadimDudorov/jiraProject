@@ -1,12 +1,12 @@
 package ru.jiraproject.jira.service;
 
 import ru.jiraproject.jira.model.dto.projectDto.ProjectDto;
-import ru.jiraproject.jira.model.dto.projectDto.ProjectResponce;
+import ru.jiraproject.jira.model.dto.projectDto.ProjectResponse;
 
 public interface ProjectService {
 
-    ProjectResponce getProject(Long taskId);
-    ProjectResponce postProject(ProjectDto projectDto);
-    ProjectResponce patchProject(ProjectDto projectDto);
+    ProjectResponse getProject(Long projectId);
+    ProjectResponse postProject(ProjectDto projectDto);
+    ProjectResponse patchProject(ProjectDto projectDto);
     String deleteProject(Long projectId);
 }

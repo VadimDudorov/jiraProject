@@ -12,16 +12,16 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "projects", schema = "jira")
-public class Project {
+public class ProjectEntity {
 
     @Id
     @GeneratedValue
     @Column(name = "project_id")
     Long projectId;
     @Column(name = "name_project")
-    String nameProject;
+    String name;
     @OneToMany(mappedBy = "project")
-    List<Task> tasks;
+    List<TaskEntity> tasks;
     @CreationTimestamp
     @Column(name = "timestamp_cr")
     LocalDateTime timestampCr;

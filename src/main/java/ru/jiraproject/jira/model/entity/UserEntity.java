@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "users", schema = "jira")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue
@@ -26,7 +26,7 @@ public class User {
     @Column(name = "role")
     String role;
     @OneToMany(mappedBy = "user")
-    List<Task> tasks;
+    List<TaskEntity> tasks;
     @CreationTimestamp
     @Column(name = "timestamp_cr")
     LocalDateTime timestampCr;

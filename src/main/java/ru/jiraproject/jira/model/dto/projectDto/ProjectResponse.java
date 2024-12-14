@@ -4,5 +4,5 @@ import ru.jiraproject.jira.model.entity.TaskEntity;
 
 import java.util.List;
 
-public record ProjectDto(Long projectId, String name, List<TaskEntity> tasks) {
+public record ProjectResponse(Long projectId, List<TaskEntity> tasks) {
 }

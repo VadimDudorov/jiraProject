@@ -3,7 +3,7 @@ package ru.jiraproject.jira.api.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.jiraproject.jira.model.dto.projectDto.ProjectDto;
-import ru.jiraproject.jira.model.dto.projectDto.ProjectResponce;
+import ru.jiraproject.jira.model.dto.projectDto.ProjectResponse;
 import ru.jiraproject.jira.service.ProjectService;
 
 @RestController
@@ -12,23 +12,23 @@ import ru.jiraproject.jira.service.ProjectService;
 public class ProjectController {
     private final ProjectService projectService;
 
-    @GetMapping("/project")
-    public ProjectResponce getProject(@RequestHeader Long projectId){
+    @GetMapping("/projects/{userId}")
+    public ProjectResponse getProject(@PathVariable Long projectId){
         return projectService.getProject(projectId);
     }
 
-    @PostMapping("/project")
-    public ProjectResponce postProject(@RequestBody ProjectDto projectDto) {
+    @PostMapping("/projects")
+    public ProjectResponse postProject(@RequestBody ProjectDto projectDto) {
         return projectService.postProject(projectDto);
     }
 
-    @PatchMapping("/project")
-    public ProjectResponce patchProject(@RequestBody ProjectDto projectDto) {
+    @PatchMapping("/projects")
+    public ProjectResponse patchProject(@RequestBody ProjectDto projectDto) {
         return projectService.patchProject(projectDto);
     }
 
-    @DeleteMapping("/project")
-    public String deleteProject(@RequestHeader Long projectId) {
+    @DeleteMapping("/projects/{userId}")
+    public String deleteProject(@PathVariable Long projectId) {
         return projectService.deleteProject(projectId);
     }
 }

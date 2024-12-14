@@ -1,12 +1,12 @@
 package ru.jiraproject.jira.service;
 
 import ru.jiraproject.jira.model.dto.userDto.UserDto;
-import ru.jiraproject.jira.model.dto.userDto.UserResponce;
+import ru.jiraproject.jira.model.dto.userDto.UserResponse;
 
 public interface UserService {
 
-    UserResponce getUser(Long userId);
-    UserResponce postUser(UserDto userDto);
-    UserResponce patchUser(UserDto userDto);
+    UserResponse getUser(Long userId);
+    UserResponse postUser(UserDto userDto);
+    UserResponse patchUser(UserDto userDto);
     String deleteUser(Long userId);
 }

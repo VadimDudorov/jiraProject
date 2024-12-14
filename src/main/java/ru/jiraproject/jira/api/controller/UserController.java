@@ -3,7 +3,7 @@ package ru.jiraproject.jira.api.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.jiraproject.jira.model.dto.userDto.UserDto;
-import ru.jiraproject.jira.model.dto.userDto.UserResponce;
+import ru.jiraproject.jira.model.dto.userDto.UserResponse;
 import ru.jiraproject.jira.service.UserService;
 
 @RestController
@@ -12,23 +12,23 @@ import ru.jiraproject.jira.service.UserService;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/user")
-    public UserResponce getUser(Long userId){
+    @GetMapping("/users/{userId}")
+    public UserResponse getUser(@PathVariable Long userId){
         return userService.getUser(userId);
     }
 
-    @PostMapping("/user")
-    public UserResponce postUser(@RequestBody UserDto userDto) {
+    @PostMapping("/users")
+    public UserResponse postUser(@RequestBody UserDto userDto) {
         return userService.postUser(userDto);
     }
 
-    @PatchMapping("/user")
-    public UserResponce patchUser(@RequestBody UserDto userDto) {
+    @PatchMapping("/users")
+    public UserResponse patchUser(@RequestBody UserDto userDto) {
         return userService.patchUser(userDto);
     }
 
-    @DeleteMapping("/user")
-    public String deleteUser(Long userId) {
+    @DeleteMapping("/users/{userId}")
+    public String deleteUser(@PathVariable Long userId) {
         return userService.deleteUser(userId);
     }
 }

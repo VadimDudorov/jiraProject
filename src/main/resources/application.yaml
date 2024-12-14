@@ -13,3 +13,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  liquibase:
+    url: jdbc:postgresql://localhost:5433/jira_db
+    user: postgres
+    password: qweasdzxc
+    enabled: true
+    change-log: classpath:db/changelog/Changelog.xml

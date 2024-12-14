@@ -1,0 +1,1 @@
+CREATE SCHEMA jira AUTHORIZATION postgres;

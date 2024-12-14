@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "tasks", schema = "jira")
-public class Task {
+public class TaskEntity {
 
     @Id
     @GeneratedValue
@@ -25,10 +25,10 @@ public class Task {
     Status status;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    UserEntity user;
     @ManyToOne
     @JoinColumn(name = "project_id")
-    Project project;
+    ProjectEntity project;
     @CreationTimestamp
     @Column(name = "timestamp_cr")
     LocalDateTime timestampCr;

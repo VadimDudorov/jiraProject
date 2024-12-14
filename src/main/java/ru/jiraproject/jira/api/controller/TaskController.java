@@ -3,7 +3,7 @@ package ru.jiraproject.jira.api.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.jiraproject.jira.model.dto.taskDto.TaskDto;
-import ru.jiraproject.jira.model.dto.taskDto.TaskResponce;
+import ru.jiraproject.jira.model.dto.taskDto.TaskResponse;
 import ru.jiraproject.jira.service.TaskService;
 
 @RestController
@@ -12,23 +12,23 @@ import ru.jiraproject.jira.service.TaskService;
 public class TaskController {
     private final TaskService taskService;
 
-    @GetMapping("/task")
-    public TaskResponce getTask(Long taskId){
+    @GetMapping("/tasks/{userId}")
+    public TaskResponse getTask(@PathVariable Long taskId){
         return taskService.getTask(taskId);
     }
 
-    @PostMapping("/task")
-    public TaskResponce postTask(@RequestBody TaskDto taskDto) {
+    @PostMapping("/tasks")
+    public TaskResponse postTask(@RequestBody TaskDto taskDto) {
         return taskService.postTask(taskDto);
     }
 
-    @PatchMapping("/task")
-    public TaskResponce patchTask(@RequestBody TaskDto taskDto) {
+    @PatchMapping("/tasks")
+    public TaskResponse patchTask(@RequestBody TaskDto taskDto) {
         return taskService.patchTask(taskDto);
     }
 
-    @DeleteMapping("/task")
-    public String deleteTask(Long taskId) {
+    @DeleteMapping("/tasks/{userId}")
+    public String deleteTask(@PathVariable Long taskId) {
         return taskService.deleteTask(taskId);
     }
 }
