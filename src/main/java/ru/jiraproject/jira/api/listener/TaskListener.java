@@ -9,7 +9,7 @@ import ru.jiraproject.jira.repository.jira.TaskRepository;
 
 @Service
 @RequiredArgsConstructor
-public class TestListener {
+public class TaskListener {
     private final TaskRepository taskRepository;
     @KafkaListener(
             id = "post_task_data_listener",
