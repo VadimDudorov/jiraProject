@@ -23,7 +23,7 @@ public class ProjectController {
     }
 
     @PatchMapping("/projects")
-    public ProjectResponse patchProject(@RequestBody ProjectDto projectDto) {
+    public String patchProject(@RequestBody ProjectDto projectDto) {
         return projectService.patchProject(projectDto);
     }
 

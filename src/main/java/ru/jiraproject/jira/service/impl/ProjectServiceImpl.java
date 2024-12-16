@@ -2,6 +2,7 @@ package ru.jiraproject.jira.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.jiraproject.jira.enums.Response;
 import ru.jiraproject.jira.model.dto.projectDto.ProjectDto;
 import ru.jiraproject.jira.model.dto.projectDto.ProjectResponse;
 import ru.jiraproject.jira.model.entity.ProjectEntity;
@@ -26,16 +27,22 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectResponse postProject(ProjectDto projectDto) {
-        return null;
+        ProjectEntity saveProject = projectRepository.save(projectMapper.createProject(projectDto));
+        return projectMapper.createProjectResponse(saveProject);
     }
 
     @Override
-    public ProjectResponse patchProject(ProjectDto projectDto) {
-        return null;
+    public String patchProject(ProjectDto projectDto) {
+        if (projectDto.projectId() == null) {
+            throw new RuntimeException("projectId отсутствует");
+        }
+        projectRepository.save(projectMapper.createProject(projectDto));
+        return Response.OK.getDescription();
     }
 
     @Override
     public String deleteProject(Long projectId) {
-        return "";
+        projectRepository.deleteById(projectId);
+        return Response.OK.getDescription();
     }
 }

@@ -7,6 +7,6 @@ public interface UserService {
 
     UserResponse getUser(Long userId);
     UserResponse postUser(UserDto userDto);
-    UserResponse patchUser(UserDto userDto);
+    String patchUser(UserDto userDto);
     String deleteUser(Long userId);
 }

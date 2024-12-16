@@ -19,11 +19,12 @@ public class TaskController {
 
     @PostMapping("/tasks")
     public TaskResponse postTask(@RequestBody TaskDto taskDto) {
-        return taskService.postTask(taskDto);
+        //TODO реализовать feignClient для отправки сообщения в Kafka
+        return null;
     }
 
     @PatchMapping("/tasks")
-    public TaskResponse patchTask(@RequestBody TaskDto taskDto) {
+    public String patchTask(@RequestBody TaskDto taskDto) {
         return taskService.patchTask(taskDto);
     }
 

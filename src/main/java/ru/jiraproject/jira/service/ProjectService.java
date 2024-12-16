@@ -7,6 +7,6 @@ public interface ProjectService {
 
     ProjectResponse getProject(Long projectId);
     ProjectResponse postProject(ProjectDto projectDto);
-    ProjectResponse patchProject(ProjectDto projectDto);
+    String patchProject(ProjectDto projectDto);
     String deleteProject(Long projectId);
 }

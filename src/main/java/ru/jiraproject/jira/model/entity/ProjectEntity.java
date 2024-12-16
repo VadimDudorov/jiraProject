@@ -1,7 +1,8 @@
 package ru.jiraproject.jira.model.entity;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -28,5 +29,4 @@ public class ProjectEntity {
     @UpdateTimestamp
     @Column(name = "timestamp_up")
     LocalDateTime timestampUp;
-
 }

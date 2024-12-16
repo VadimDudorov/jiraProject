@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @PatchMapping("/users")
-    public UserResponse patchUser(@RequestBody UserDto userDto) {
+    public String patchUser(@RequestBody UserDto userDto) {
         return userService.patchUser(userDto);
     }
 
