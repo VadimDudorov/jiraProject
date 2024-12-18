@@ -1,6 +1,7 @@
 package ru.jiraproject.jira.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.jiraproject.jira.enums.Response;
 import ru.jiraproject.jira.model.dto.taskDto.TaskDto;
@@ -19,6 +20,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskMapper taskMapper;
 
     @Override
+    @Cacheable(value = "task", key = "#taskId")
     public TaskResponse getTask(Long taskId) {
         Optional<TaskEntity> byId = taskRepository.findById(taskId);
         if(byId.isEmpty()){

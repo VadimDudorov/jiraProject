@@ -23,5 +23,5 @@ spring:
     enabled: false
     bootstrap-servers: localhost:29092
     consumer:
-      group-id: local-test
+      group-id: local-jira
       auto-offset-reset: earliest
