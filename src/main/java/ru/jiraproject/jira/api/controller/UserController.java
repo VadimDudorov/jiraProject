@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.jiraproject.jira.model.dto.userDto.UserDto;
 import ru.jiraproject.jira.model.dto.userDto.UserResponse;
+import ru.jiraproject.jira.model.response.ServiceResponse;
 import ru.jiraproject.jira.service.UserService;
 
 @RestController
@@ -23,12 +24,12 @@ public class UserController {
     }
 
     @PatchMapping("/users")
-    public String patchUser(@RequestBody UserDto userDto) {
+    public ServiceResponse patchUser(@RequestBody UserDto userDto) {
         return userService.patchUser(userDto);
     }
 
     @DeleteMapping("/users/{userId}")
-    public String deleteUser(@PathVariable Long userId) {
+    public ServiceResponse deleteUser(@PathVariable Long userId) {
         return userService.deleteUser(userId);
     }
 }

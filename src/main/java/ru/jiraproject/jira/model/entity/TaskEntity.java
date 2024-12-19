@@ -22,6 +22,7 @@ public class TaskEntity {
     @Column(name = "description")
     String description;
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     Status status;
     @ManyToOne
     @JoinColumn(name = "user_id")

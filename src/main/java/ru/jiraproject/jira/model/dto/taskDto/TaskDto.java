@@ -5,7 +5,6 @@ import ru.jiraproject.jira.enums.Status;
 import javax.validation.constraints.NotNull;
 
 public record TaskDto(
-        @NotNull(message = "taskId обязателен для заполнения")
         Long taskId,
         @NotNull(message = "description обязателен для заполнения")
         String description,

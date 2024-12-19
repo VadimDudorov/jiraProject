@@ -1,14 +1,17 @@
 package ru.jiraproject.jira.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ru.jiraproject.jira.enums.Response;
+import ru.jiraproject.jira.exception.JiraNotFoundException;
 import ru.jiraproject.jira.model.dto.userDto.UserDto;
 import ru.jiraproject.jira.model.dto.userDto.UserResponse;
 import ru.jiraproject.jira.model.entity.UserEntity;
 import ru.jiraproject.jira.model.mapper.UserMapper;
+import ru.jiraproject.jira.model.response.ServiceResponse;
 import ru.jiraproject.jira.repository.jira.UserRepository;
 import ru.jiraproject.jira.service.UserService;
+import ru.jiraproject.jira.util.ResponseOK;
 
 import java.util.Optional;
 
@@ -35,17 +38,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String patchUser(UserDto userDto) {
+    public ServiceResponse patchUser(UserDto userDto) {
         if(userDto.userId() == null){
-            throw new RuntimeException("userId отсутствует");
+            throw new JiraNotFoundException("userId отсутствует", HttpStatus.NOT_FOUND);
         }
         userRepository.save(userMapper.createUser(userDto));
-        return Response.OK.getDescription();
+        return ResponseOK.statusOK();
     }
 
     @Override
-    public String deleteUser(Long userId) {
+    public ServiceResponse deleteUser(Long userId) {
         userRepository.deleteById(userId);
-        return Response.OK.getDescription();
+        return ResponseOK.statusOK();
     }
 }

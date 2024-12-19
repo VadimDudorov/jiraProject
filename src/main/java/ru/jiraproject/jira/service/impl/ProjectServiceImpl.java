@@ -1,14 +1,19 @@
 package ru.jiraproject.jira.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ru.jiraproject.jira.enums.Response;
+import ru.jiraproject.jira.exception.JiraNotFoundException;
 import ru.jiraproject.jira.model.dto.projectDto.ProjectDto;
 import ru.jiraproject.jira.model.dto.projectDto.ProjectResponse;
 import ru.jiraproject.jira.model.entity.ProjectEntity;
 import ru.jiraproject.jira.model.mapper.ProjectMapper;
+import ru.jiraproject.jira.model.response.ServiceResponse;
 import ru.jiraproject.jira.repository.jira.ProjectRepository;
 import ru.jiraproject.jira.service.ProjectService;
+import ru.jiraproject.jira.util.ResponseOK;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 import java.util.Optional;
 
@@ -32,17 +37,17 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public String patchProject(ProjectDto projectDto) {
+    public ServiceResponse patchProject(ProjectDto projectDto) {
         if (projectDto.projectId() == null) {
-            throw new RuntimeException("projectId отсутствует");
+            throw new JiraNotFoundException("projectId отсутствует", HttpStatus.NOT_FOUND);
         }
         projectRepository.save(projectMapper.createProject(projectDto));
-        return Response.OK.getDescription();
+        return ResponseOK.statusOK();
     }
 
     @Override
-    public String deleteProject(Long projectId) {
+    public ServiceResponse deleteProject(Long projectId) {
         projectRepository.deleteById(projectId);
-        return Response.OK.getDescription();
+        return ResponseOK.statusOK();
     }
 }

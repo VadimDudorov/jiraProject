@@ -48,7 +48,6 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
       # volumes:
       #   - ./kafka-ui/dynamic_config.yml:/etc/kafkaui/dynamic_config.yaml
-
   redis:
     image: redis/redis-stack
     ports:

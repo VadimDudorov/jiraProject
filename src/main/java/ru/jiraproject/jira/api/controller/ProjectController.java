@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.jiraproject.jira.model.dto.projectDto.ProjectDto;
 import ru.jiraproject.jira.model.dto.projectDto.ProjectResponse;
+import ru.jiraproject.jira.model.response.ServiceResponse;
 import ru.jiraproject.jira.service.ProjectService;
 
 @RestController
@@ -23,12 +24,12 @@ public class ProjectController {
     }
 
     @PatchMapping("/projects")
-    public String patchProject(@RequestBody ProjectDto projectDto) {
+    public ServiceResponse patchProject(@RequestBody ProjectDto projectDto) {
         return projectService.patchProject(projectDto);
     }
 
     @DeleteMapping("/projects/{userId}")
-    public String deleteProject(@PathVariable Long projectId) {
+    public ServiceResponse deleteProject(@PathVariable Long projectId) {
         return projectService.deleteProject(projectId);
     }
 }

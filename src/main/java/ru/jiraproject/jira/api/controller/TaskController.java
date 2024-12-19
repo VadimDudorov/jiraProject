@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.jiraproject.jira.model.dto.taskDto.TaskDto;
 import ru.jiraproject.jira.model.dto.taskDto.TaskResponse;
+import ru.jiraproject.jira.model.response.ServiceResponse;
 import ru.jiraproject.jira.service.TaskService;
 
 @RestController
@@ -12,24 +13,24 @@ import ru.jiraproject.jira.service.TaskService;
 public class TaskController {
     private final TaskService taskService;
 
-    @GetMapping("/tasks/{userId}")
+    @GetMapping("/tasks/{taskId}")
     public TaskResponse getTask(@PathVariable Long taskId){
         return taskService.getTask(taskId);
     }
 
     @PostMapping("/tasks")
     public TaskResponse postTask(@RequestBody TaskDto taskDto) {
-        //TODO реализовать feignClient для отправки сообщения в Kafka
+        taskService.postTask(taskDto);
         return null;
     }
 
     @PatchMapping("/tasks")
-    public String patchTask(@RequestBody TaskDto taskDto) {
+    public ServiceResponse patchTask(@RequestBody TaskDto taskDto) {
         return taskService.patchTask(taskDto);
     }
 
     @DeleteMapping("/tasks/{userId}")
-    public String deleteTask(@PathVariable Long taskId) {
+    public ServiceResponse deleteTask(@PathVariable Long taskId) {
         return taskService.deleteTask(taskId);
     }
 }
