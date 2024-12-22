@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ru.jiraproject.jira.exception.JiraException;
 import ru.jiraproject.jira.exception.JiraNotFoundException;
+import ru.jiraproject.jira.feign.KafkaJiraApiFeignClient;
 import ru.jiraproject.jira.model.dto.taskDto.TaskDto;
 import ru.jiraproject.jira.model.dto.taskDto.TaskResponse;
 import ru.jiraproject.jira.model.entity.TaskEntity;
@@ -22,12 +22,13 @@ import java.util.Optional;
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
+    private final KafkaJiraApiFeignClient kafkaJiraApiFeignClient;
 
     @Override
     @Cacheable(value = "task", key = "#taskId")
     public TaskResponse getTask(Long taskId) {
         Optional<TaskEntity> byId = taskRepository.findById(taskId);
-        if(byId.isEmpty()){
+        if (byId.isEmpty()) {
             throw new JiraNotFoundException("Данный taskId отсутствует в БД", HttpStatus.NOT_FOUND);
         }
         TaskResponse taskResponse = taskMapper.createTaskResponse(byId.get());
@@ -36,21 +37,20 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void postTask(TaskDto taskDto) {
-        TaskEntity task = taskMapper.createTask(taskDto);
-        taskRepository.save(task);
+        kafkaJiraApiFeignClient.postTaskJira(taskDto);
     }
 
     @Override
     public ServiceResponse patchTask(TaskDto taskDto) {
-        if(taskDto.userId() != null){
+        if (taskDto.userId() != null) {
             Optional<TaskEntity> byId = taskRepository.findById(taskDto.userId());
-            if(byId.isEmpty()){
+            if (byId.isEmpty()) {
                 throw new JiraNotFoundException("Указанный userId отсутствует", HttpStatus.NOT_FOUND);
             }
         }
-        if(taskDto.projectId() != null){
+        if (taskDto.projectId() != null) {
             Optional<TaskEntity> byId = taskRepository.findById(taskDto.projectId());
-            if(byId.isEmpty()){
+            if (byId.isEmpty()) {
                 throw new JiraNotFoundException("Указанный projectId отсутствует", HttpStatus.NOT_FOUND);
             }
         }

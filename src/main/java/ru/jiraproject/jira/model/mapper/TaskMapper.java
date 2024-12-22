@@ -10,6 +10,7 @@ import ru.jiraproject.jira.model.entity.TaskEntity;
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
     TaskEntity createTask(TaskDto taskDto);
+
     TaskDto createTaskDto(TaskEntity task);
 
     @Mappings(value = {

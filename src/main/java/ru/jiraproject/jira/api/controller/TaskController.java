@@ -6,6 +6,7 @@ import ru.jiraproject.jira.model.dto.taskDto.TaskDto;
 import ru.jiraproject.jira.model.dto.taskDto.TaskResponse;
 import ru.jiraproject.jira.model.response.ServiceResponse;
 import ru.jiraproject.jira.service.TaskService;
+import ru.jiraproject.jira.util.ResponseOK;
 
 @RestController
 @RequestMapping({"/api/v1.0"})
@@ -14,14 +15,13 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/tasks/{taskId}")
-    public TaskResponse getTask(@PathVariable Long taskId){
+    public TaskResponse getTask(@PathVariable Long taskId) {
         return taskService.getTask(taskId);
     }
 
     @PostMapping("/tasks")
-    public TaskResponse postTask(@RequestBody TaskDto taskDto) {
+    public void postTask(@RequestBody TaskDto taskDto) {
         taskService.postTask(taskDto);
-        return null;
     }
 
     @PatchMapping("/tasks")

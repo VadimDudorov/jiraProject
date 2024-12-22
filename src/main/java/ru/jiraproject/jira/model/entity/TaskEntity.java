@@ -20,7 +20,7 @@ public class TaskEntity {
     @Column(name = "story_point")
     Long storyPoint;
     @Column(name = "description")
-    String description;
+    String description = "descTest";
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     Status status;
