@@ -10,8 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class JiraApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JiraApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(JiraApplication.class, args);
+  }
 
 }

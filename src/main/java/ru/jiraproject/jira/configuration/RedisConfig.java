@@ -11,11 +11,12 @@ import java.time.Duration;
 @Configuration
 public class RedisConfig {
 
-    @Bean
-    public RedisCacheConfiguration configRedis(){
-        return RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMinutes(60))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair
-                        .fromSerializer(new GenericJackson2JsonRedisSerializer()));
-    }
+  @Bean
+  public RedisCacheConfiguration configRedis() {
+
+    return RedisCacheConfiguration.defaultCacheConfig()
+        .entryTtl(Duration.ofMinutes(60))
+        .serializeValuesWith(RedisSerializationContext.SerializationPair
+            .fromSerializer(new GenericJackson2JsonRedisSerializer()));
+  }
 }

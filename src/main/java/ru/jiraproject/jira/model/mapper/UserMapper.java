@@ -7,7 +7,10 @@ import ru.jiraproject.jira.model.entity.UserEntity;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    UserEntity createUser(UserDto userDto);
-    UserDto createUserDto(UserEntity user);
-    UserResponse createUserResponse(UserEntity user);
+
+  UserEntity createUser(UserDto userDto);
+
+  UserDto createUserDto(UserEntity user);
+
+  UserResponse createUserResponse(UserEntity user);
 }

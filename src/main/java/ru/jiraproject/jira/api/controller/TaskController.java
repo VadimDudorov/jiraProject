@@ -12,25 +12,26 @@ import ru.jiraproject.jira.util.ResponseOK;
 @RequestMapping({"/api/v1.0"})
 @RequiredArgsConstructor
 public class TaskController {
-    private final TaskService taskService;
 
-    @GetMapping("/tasks/{taskId}")
-    public TaskResponse getTask(@PathVariable Long taskId) {
-        return taskService.getTask(taskId);
-    }
+  private final TaskService taskService;
 
-    @PostMapping("/tasks")
-    public void postTask(@RequestBody TaskDto taskDto) {
-        taskService.postTask(taskDto);
-    }
+  @GetMapping("/tasks/{taskId}")
+  public ServiceResponse getTask(@PathVariable Long taskId) {
+    return taskService.getTask(taskId);
+  }
 
-    @PatchMapping("/tasks")
-    public ServiceResponse patchTask(@RequestBody TaskDto taskDto) {
-        return taskService.patchTask(taskDto);
-    }
+  @PostMapping("/tasks")
+  public void postTask(@RequestBody TaskDto taskDto) {
+    taskService.postTask(taskDto);
+  }
 
-    @DeleteMapping("/tasks/{userId}")
-    public ServiceResponse deleteTask(@PathVariable Long taskId) {
-        return taskService.deleteTask(taskId);
-    }
+  @PatchMapping("/tasks")
+  public ServiceResponse patchTask(@RequestBody TaskDto taskDto) {
+    return taskService.patchTask(taskDto);
+  }
+
+  @DeleteMapping("/tasks/{userId}")
+  public ServiceResponse deleteTask(@PathVariable Long taskId) {
+    return taskService.deleteTask(taskId);
+  }
 }

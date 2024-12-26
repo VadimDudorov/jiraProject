@@ -11,25 +11,26 @@ import ru.jiraproject.jira.service.ProjectService;
 @RequestMapping({"/api/v1.0"})
 @RequiredArgsConstructor
 public class ProjectController {
-    private final ProjectService projectService;
 
-    @GetMapping("/projects/{userId}")
-    public ProjectResponse getProject(@PathVariable Long projectId){
-        return projectService.getProject(projectId);
-    }
+  private final ProjectService projectService;
 
-    @PostMapping("/projects")
-    public ProjectResponse postProject(@RequestBody ProjectDto projectDto) {
-        return projectService.postProject(projectDto);
-    }
+  @GetMapping("/projects/{userId}")
+  public ServiceResponse getProject(@PathVariable Long projectId) {
+    return projectService.getProject(projectId);
+  }
 
-    @PatchMapping("/projects")
-    public ServiceResponse patchProject(@RequestBody ProjectDto projectDto) {
-        return projectService.patchProject(projectDto);
-    }
+  @PostMapping("/projects")
+  public ServiceResponse postProject(@RequestBody ProjectDto projectDto) {
+    return projectService.postProject(projectDto);
+  }
 
-    @DeleteMapping("/projects/{userId}")
-    public ServiceResponse deleteProject(@PathVariable Long projectId) {
-        return projectService.deleteProject(projectId);
-    }
+  @PatchMapping("/projects")
+  public ServiceResponse patchProject(@RequestBody ProjectDto projectDto) {
+    return projectService.patchProject(projectDto);
+  }
+
+  @DeleteMapping("/projects/{userId}")
+  public ServiceResponse deleteProject(@PathVariable Long projectId) {
+    return projectService.deleteProject(projectId);
+  }
 }

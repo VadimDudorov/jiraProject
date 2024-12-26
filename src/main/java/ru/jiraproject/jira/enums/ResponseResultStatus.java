@@ -10,6 +10,7 @@ public enum ResponseResultStatus {
 
     SUCCESS("success"),
     NOT_FOUND("not found"),
+    BAD_REQUEST("bad request"),
     ERROR("error");
 
     @Getter

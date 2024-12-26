@@ -6,8 +6,11 @@ import ru.jiraproject.jira.model.response.ServiceResponse;
 
 public interface ProjectService {
 
-    ProjectResponse getProject(Long projectId);
-    ProjectResponse postProject(ProjectDto projectDto);
-    ServiceResponse patchProject(ProjectDto projectDto);
-    ServiceResponse deleteProject(Long projectId);
+  ServiceResponse getProject(Long projectId);
+
+  ServiceResponse postProject(ProjectDto projectDto);
+
+  ServiceResponse patchProject(ProjectDto projectDto);
+
+  ServiceResponse deleteProject(Long projectId);
 }

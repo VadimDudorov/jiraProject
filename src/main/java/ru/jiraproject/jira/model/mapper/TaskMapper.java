@@ -9,13 +9,14 @@ import ru.jiraproject.jira.model.entity.TaskEntity;
 
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
-    TaskEntity createTask(TaskDto taskDto);
 
-    TaskDto createTaskDto(TaskEntity task);
+  TaskEntity createTask(TaskDto taskDto);
 
-    @Mappings(value = {
-            @Mapping(target = "userId", source = "task.user.userId"),
-            @Mapping(target = "projectId", source = "task.project.projectId")
-    })
-    TaskResponse createTaskResponse(TaskEntity task);
+  TaskDto createTaskDto(TaskEntity task);
+
+  @Mappings(value = {
+      @Mapping(target = "userId", source = "task.user.userId"),
+      @Mapping(target = "projectId", source = "task.project.projectId")
+  })
+  TaskResponse createTaskResponse(TaskEntity task);
 }

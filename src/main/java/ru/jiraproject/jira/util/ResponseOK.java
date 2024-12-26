@@ -13,4 +13,12 @@ public class ResponseOK {
                 .message("Операция выполнена успешно")
                 .build()).build();
     }
+
+    public static StatusResponse statusResponseOK(){
+        return StatusResponse.builder()
+                .code(200)
+                .status(SUCCESS.getValue())
+                .message("Операция выполнена успешно")
+                .build();
+    }
 }

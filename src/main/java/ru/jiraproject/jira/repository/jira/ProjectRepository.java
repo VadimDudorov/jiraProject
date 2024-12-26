@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import ru.jiraproject.jira.model.entity.ProjectEntity;
 
 public interface ProjectRepository extends JpaRepository<ProjectEntity, Long> {
+
 }

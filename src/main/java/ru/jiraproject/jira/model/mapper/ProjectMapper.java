@@ -7,7 +7,10 @@ import ru.jiraproject.jira.model.entity.ProjectEntity;
 
 @Mapper(componentModel = "spring")
 public interface ProjectMapper {
-    ProjectEntity createProject(ProjectDto projectDto);
-    ProjectDto createProjectDto(ProjectEntity project);
-    ProjectResponse createProjectResponse(ProjectEntity project);
+
+  ProjectEntity createProject(ProjectDto projectDto);
+
+  ProjectDto createProjectDto(ProjectEntity project);
+
+  ProjectResponse createProjectResponse(ProjectEntity project);
 }

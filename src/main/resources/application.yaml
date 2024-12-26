@@ -35,4 +35,4 @@ feign:
     loggerLevel: FULL
 jira:
   external:
-    kafkaProduceTask: http://localhost:8088
+    kafkaProduceTask: http://localhost:8089
